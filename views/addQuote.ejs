@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+
+<body>
+<%- include("partials/nav") %>
+<h1>Adding a New Quote</h1>
+
+<form action="/addQuote" method="POST">
+
+    Quote:
+    <textarea name="quote"></textarea><br>
+
+    Category:
+    <select name="category">
+        <% categories.forEach(c => { %>
+            <option value="<%= c.category %>"><%= c.category %></option>
+        <% }) %>
+    </select>
+    <br>
+
+    Author:
+    <select name="authorId">
+        <% authors.forEach(a => { %>
+            <option value="<%= a.authorId %>"><%= a.name %></option>
+        <% }) %>
+    </select>
+    <br>
+
+    <button>Add Quote!</button>
+
+    <% if (typeof success !== "undefined") { %>
+    <div><%= success %></div>
+    <% } %>
+    <br>
+    
+
+</form>
+    
+</body>
+</html>

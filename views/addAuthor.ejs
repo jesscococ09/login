@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+
+<body>
+<%- include("partials/nav") %>
+<h1>Adding a New Author</h1>
+
+
+<form action="/addAuthor" method="POST">
+
+    First Name:
+    <input type="text" name="firstName"><br>
+
+    Last Name:
+    <input type="text" name="lastName"><br>
+
+    Date of Birth:
+    <input type="date" name="dob"><br>
+
+    Date of Death:
+    <input type="date" name="dod"><br>
+
+    Sex:
+    <label><input type="radio" name="sex" value="F"> F</label>
+    <label><input type="radio" name="sex" value="M"> M</label>
+    <br>
+
+    Profession:
+    <input type="text" name="profession"><br>
+
+    Country:
+    <input type="text" name="country"><br>
+
+    Portrait URL:
+    <input type="text" name="portrait"><br>
+
+    Biography:
+    <textarea name="bio"></textarea><br>
+
+    <button>Add Author!</button>
+
+    <% if (typeof success !== "undefined") { %>
+    <div><%= success %></div>
+    <% } %>
+    <br>
+    
+</form>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+<body>
+
+<%- include("partials/nav") %>
+
+<div class="container mt-4">
+
+    <h1 class="text-center mb-4">Admin Settings</h1>
+    <div class="card shadow-sm mb-5">
+        <div class="card-body">
+
+            <h4 class="mb-3 text-center">Add New Admin</h4>
+
+            <form action="/addAdmin" method="POST">
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" name="username" placeholder="Username" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary px-4">Add Admin</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <h3 class="text-center mb-3">Existing Admins</h3>
+
+    <div class="row g-4 justify-content-center">
+
+        <% admins.forEach(a => { %>
+            <div class="col-md-4">
+                <div class="card shadow-sm h-100">
+
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title mb-2">
+                            <%= a.firstName %> <%= a.lastName %>
+                        </h5>
+
+                        <p class="text-muted mb-3">@<%= a.username %></p>
+
+                        <form action="/deleteAdmin/<%= a.adminId %>" method="POST">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        <% }) %>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

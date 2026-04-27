@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head") %>
+
+<body>
+<%- include("partials/nav") %>
+<h1>Updating Author</h1>
+
+<form action="/updateAuthor" method="POST">
+    <input type="hidden" name="authorId" value="<%= authorInfo[0].authorId %>">
+
+    First Name:
+    <input type="text" name="firstName" value="<%= authorInfo[0].firstName %>"><br>
+
+    Last Name:
+    <input type="text" name="lastName" value="<%= authorInfo[0].lastName %>"><br>
+
+    Date of Birth:
+    <input type="date" name="dob" value="<%= authorInfo[0].ISOdob %>"><br>
+
+    Date of Death:
+    <input type="date" name="dod" value="<%= authorInfo[0].ISOdod %>"><br>
+
+    Sex:
+    <label>
+        <input type="radio" name="sex" value="F"
+            <%= authorInfo[0].sex === 'F' ? "checked" : "" %>> F
+    </label>
+    <label>
+        <input type="radio" name="sex" value="M"
+            <%= authorInfo[0].sex === 'M' ? "checked" : "" %>> M
+    </label>
+    <br>
+
+    Profession:
+    <input type="text" name="profession" value="<%= authorInfo[0].profession %>"><br>
+
+    Country:
+    <input type="text" name="country" value="<%= authorInfo[0].country %>"><br>
+
+    Portrait URL:
+    <input type="text" name="portrait" value="<%= authorInfo[0].portrait %>"><br>
+
+    Biography:
+    <textarea name="bio"><%= authorInfo[0].biography %></textarea><br>
+
+    <button>Update Author!</button>
+    <% if (typeof success !== "undefined") { %>
+    <div><%= success %></div>
+    <% } %>
+</form>
+<br>
+    
+</body>
+</html>
